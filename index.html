@@ -17,7 +17,6 @@
             --accent-hover: #d97706;
             --accent-glow: rgba(245, 158, 11, 0.15);
             --ai-color: #06b6d4;
-            --ai-color-dim: rgba(6, 182, 212, 0.12);
             --ai-glow: rgba(6, 182, 212, 0.2);
             --text: #eaeaf0;
             --text-muted: #7a7a96;
@@ -34,24 +33,14 @@
         html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            min-height: 100dvh;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            padding-top: var(--safe-t);
-            padding-left: var(--safe-l);
-            padding-right: var(--safe-r);
+            background: var(--bg); color: var(--text);
+            min-height: 100vh; min-height: 100dvh;
+            overflow-x: hidden; display: flex; flex-direction: column;
+            padding-top: var(--safe-t); padding-left: var(--safe-l); padding-right: var(--safe-r);
             -webkit-tap-highlight-color: transparent;
         }
-
         .bg-layer { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-        .bg-blob {
-            position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3;
-            animation: blobFloat 18s ease-in-out infinite alternate;
-        }
+        .bg-blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.3; animation: blobFloat 18s ease-in-out infinite alternate; }
         .bg-blob:nth-child(1) { width: 500px; height: 500px; background: radial-gradient(circle, #f59e0b, transparent 70%); top: -15%; left: -10%; animation-duration: 20s; }
         .bg-blob:nth-child(2) { width: 400px; height: 400px; background: radial-gradient(circle, #d97706, transparent 70%); bottom: -10%; right: -5%; animation-duration: 25s; animation-delay: -5s; }
         .bg-blob:nth-child(3) { width: 300px; height: 300px; background: radial-gradient(circle, #92400e, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-duration: 22s; animation-delay: -10s; }
@@ -66,12 +55,7 @@
             background-image: linear-gradient(rgba(245,158,11,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(245,158,11,0.03) 1px, transparent 1px);
             background-size: 60px 60px;
         }
-
-        .main-container {
-            position: relative; z-index: 1; width: 100%; max-width: 960px;
-            margin: 0 auto; padding: 1.5rem 1.25rem 1rem; flex: 1;
-        }
-
+        .main-container { position: relative; z-index: 1; width: 100%; max-width: 960px; margin: 0 auto; padding: 1.5rem 1.25rem 1rem; flex: 1; }
         .upload-zone {
             border: 2px dashed rgba(245,158,11,0.25); border-radius: 20px;
             background: var(--bg-card); backdrop-filter: blur(20px);
@@ -92,20 +76,13 @@
         .upload-zone:hover .upload-icon { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(245,158,11,0.15); }
         .upload-title { font-size: 1.05rem; font-weight: 600; text-align: center; margin-bottom: 0.4rem; position: relative; }
         .upload-sub { color: var(--text-muted); font-size: 0.82rem; text-align: center; position: relative; }
-
         .card { background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 16px; }
         .card-accent { border-color: var(--card-border); }
-
         .progress-track { height: 8px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
         .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #fbbf24); border-radius: 99px; transition: width 0.3s ease; position: relative; }
         .progress-fill::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 1.5s infinite; }
         @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-
-        .preview-table-wrap {
-            overflow: auto; max-height: 50vh; min-height: 200px;
-            border-radius: 12px; border: 1px solid var(--border);
-            -webkit-overflow-scrolling: touch;
-        }
+        .preview-table-wrap { overflow: auto; max-height: 50vh; min-height: 200px; border-radius: 12px; border: 1px solid var(--border); -webkit-overflow-scrolling: touch; }
         .preview-table-wrap::-webkit-scrollbar { width: 5px; height: 5px; }
         .preview-table-wrap::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
         .preview-table-wrap::-webkit-scrollbar-thumb { background: rgba(245,158,11,0.3); border-radius: 99px; }
@@ -116,169 +93,79 @@
             white-space: nowrap; border-bottom: 1px solid var(--card-border); font-size: 0.76rem;
         }
         .preview-table th.ai-header { background: rgba(6,182,212,0.1); color: var(--ai-color); border-bottom-color: rgba(6,182,212,0.2); }
-        .preview-table td {
-            padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--text);
-            max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-        }
+        .preview-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--text); max-width: 240px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .preview-table tr:hover td { background: rgba(245,158,11,0.03); }
         .preview-table .page-separator td { background: rgba(245,158,11,0.06); color: var(--accent); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.04em; }
-
+        .preview-table td.num-cell { text-align: right; font-variant-numeric: tabular-nums; color: #d4d4e8; }
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 9px;
             font-family: inherit; font-weight: 700; border-radius: 12px; border: none;
             cursor: pointer; position: relative; overflow: hidden;
             padding: 13px 22px; font-size: 0.88rem;
-            min-height: 48px; min-width: 48px;
-            transition: all 0.3s;
+            min-height: 48px; min-width: 48px; transition: all 0.3s;
             -webkit-user-select: none; user-select: none;
         }
         .btn::after { content: ''; position: absolute; inset: 0; background: transparent; transition: background 0.2s; }
         .btn:active::after { background: rgba(255,255,255,0.08); }
         .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
         .btn:disabled::after { display: none; }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--accent-hover)); color: #0a0a12;
-        }
+        .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-hover)); color: #0a0a12; }
         .btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent); opacity: 0; transition: opacity 0.3s; z-index: 0; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,158,11,0.3); }
         .btn-primary:hover::before { opacity: 1; }
         .btn-primary:active { transform: translateY(0); }
         .btn-primary i, .btn-primary span { position: relative; z-index: 1; }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.06); color: var(--text);
-            border: 1px solid var(--border); font-weight: 600;
-        }
+        .btn-secondary { background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid var(--border); font-weight: 600; }
         .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.15); }
-
-        .btn-ai {
-            background: linear-gradient(135deg, rgba(6,182,212,0.15), rgba(6,182,212,0.06));
-            color: var(--ai-color); border: 1px solid rgba(6,182,212,0.25);
-        }
-        .btn-ai::before {
-            content: ''; position: absolute; inset: -1px; border-radius: 12px;
-            background: conic-gradient(from 0deg, transparent, var(--ai-glow), transparent, var(--ai-glow), transparent);
-            animation: aiSpin 4s linear infinite; opacity: 0; transition: opacity 0.4s; z-index: -1;
-        }
+        .btn-ai { background: linear-gradient(135deg, rgba(6,182,212,0.15), rgba(6,182,212,0.06)); color: var(--ai-color); border: 1px solid rgba(6,182,212,0.25); }
+        .btn-ai::before { content: ''; position: absolute; inset: -1px; border-radius: 12px; background: conic-gradient(from 0deg, transparent, var(--ai-glow), transparent, var(--ai-glow), transparent); animation: aiSpin 4s linear infinite; opacity: 0; transition: opacity 0.4s; z-index: -1; }
         .btn-ai:hover::before { opacity: 1; }
-        .btn-ai:hover {
-            background: linear-gradient(135deg, rgba(6,182,212,0.25), rgba(6,182,212,0.1));
-            border-color: var(--ai-color); transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(6,182,212,0.15);
-        }
+        .btn-ai:hover { background: linear-gradient(135deg, rgba(6,182,212,0.25), rgba(6,182,212,0.1)); border-color: var(--ai-color); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(6,182,212,0.15); }
         .btn-ai:active { transform: translateY(0); }
-        .btn-ai.aligned {
-            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.06));
-            color: var(--success); border-color: rgba(16,185,129,0.3);
-        }
+        .btn-ai.aligned { background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.06)); color: var(--success); border-color: rgba(16,185,129,0.3); }
         .btn-ai.aligned::before { animation: none; opacity: 0; }
         .btn-ai.aligned:hover { background: linear-gradient(135deg, rgba(16,185,129,0.25), rgba(16,185,129,0.1)); border-color: var(--success); box-shadow: 0 8px 30px rgba(16,185,129,0.15); }
         @keyframes aiSpin { to { transform: rotate(360deg); } }
-
-        .btn-danger {
-            background: rgba(239,68,68,0.1); color: var(--error); font-weight: 600;
-            border: 1px solid rgba(239,68,68,0.2); font-size: 0.82rem;
-            padding: 10px 18px; min-height: 42px; border-radius: 10px;
-        }
+        .btn-danger { background: rgba(239,68,68,0.1); color: var(--error); font-weight: 600; border: 1px solid rgba(239,68,68,0.2); font-size: 0.82rem; padding: 10px 18px; min-height: 42px; border-radius: 10px; }
         .btn-danger:hover { background: rgba(239,68,68,0.2); }
-
-        .toggle-track {
-            width: 44px; height: 24px; background: rgba(255,255,255,0.1); border-radius: 99px;
-            cursor: pointer; position: relative; transition: background 0.3s; flex-shrink: 0;
-            min-width: 44px; min-height: 44px;
-            display: flex; align-items: center; justify-content: center;
-            padding: 10px;
-        }
-        .toggle-track .toggle-bg {
-            position: absolute; inset: 0; border-radius: 99px; background: rgba(255,255,255,0.1);
-            transition: background 0.3s; pointer-events: none;
-        }
+        .toggle-track { width: 44px; height: 24px; background: rgba(255,255,255,0.1); border-radius: 99px; cursor: pointer; position: relative; transition: background 0.3s; flex-shrink: 0; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; padding: 10px; }
+        .toggle-track .toggle-bg { position: absolute; inset: 0; border-radius: 99px; background: rgba(255,255,255,0.1); transition: background 0.3s; pointer-events: none; }
         .toggle-track.active .toggle-bg { background: var(--accent); }
-        .toggle-thumb {
-            width: 18px; height: 18px; background: white; border-radius: 50%;
-            position: relative; z-index: 1;
-            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: 0 1px 4px rgba(0,0,0,0.3);
-        }
+        .toggle-thumb { width: 18px; height: 18px; background: white; border-radius: 50%; position: relative; z-index: 1; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 1px 4px rgba(0,0,0,0.3); }
         .toggle-track.active .toggle-thumb { transform: translateX(20px); }
-
-        .stat-badge {
-            display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px;
-            border-radius: 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-            font-size: 0.78rem; white-space: nowrap;
-        }
+        .stat-badge { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); font-size: 0.78rem; white-space: nowrap; }
         .stat-badge i { color: var(--accent); font-size: 0.82rem; }
         .stat-badge .stat-value { color: var(--text); font-weight: 600; }
         .stat-badge .stat-label { color: var(--text-muted); }
-
-        .state-badge {
-            display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px;
-            border-radius: 99px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em;
-            flex-shrink: 0;
-        }
+        .state-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 99px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; flex-shrink: 0; }
         .state-badge.raw { background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid var(--border); }
         .state-badge.aligned { background: rgba(6,182,212,0.1); color: var(--ai-color); border: 1px solid rgba(6,182,212,0.2); }
-
         .file-icon-wrap { width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
-        .toast-container {
-            position: fixed; top: calc(0.75rem + var(--safe-t)); right: 0.75rem;
-            z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem;
-            left: 0.75rem; max-width: calc(100vw - 1.5rem);
-            pointer-events: none;
-        }
-        .toast {
-            padding: 12px 16px; border-radius: 12px; font-size: 0.82rem; font-weight: 500;
-            display: flex; align-items: center; gap: 8px; backdrop-filter: blur(20px);
-            transform: translateY(-20px); opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.4); pointer-events: auto; width: 100%;
-        }
+        .toast-container { position: fixed; top: calc(0.75rem + var(--safe-t)); right: 0.75rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem; left: 0.75rem; max-width: calc(100vw - 1.5rem); pointer-events: none; }
+        .toast { padding: 12px 16px; border-radius: 12px; font-size: 0.82rem; font-weight: 500; display: flex; align-items: center; gap: 8px; backdrop-filter: blur(20px); transform: translateY(-20px); opacity: 0; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s; box-shadow: 0 8px 32px rgba(0,0,0,0.4); pointer-events: auto; width: 100%; }
         .toast.show { transform: translateY(0); opacity: 1; }
         .toast-success { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7; }
         .toast-error { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
         .toast-info { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); color: #fcd34d; }
-
         .section { display: none; }
         .section.active { display: block; animation: fadeSlideIn 0.4s ease; }
         @keyframes fadeSlideIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-
-        .ai-overlay {
-            position: absolute; inset: 0; background: rgba(10,10,18,0.88); backdrop-filter: blur(8px);
-            border-radius: 16px; display: none; align-items: center; justify-content: center;
-            flex-direction: column; gap: 0.75rem; z-index: 5;
-        }
+        .ai-overlay { position: absolute; inset: 0; background: rgba(10,10,18,0.88); backdrop-filter: blur(8px); border-radius: 16px; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 0.75rem; z-index: 5; }
         .ai-overlay.active { display: flex; animation: fadeSlideIn 0.3s ease; }
         .ai-spinner { width: 44px; height: 44px; border-radius: 50%; border: 3px solid rgba(6,182,212,0.15); border-top-color: var(--ai-color); animation: spin 0.8s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
-
         .particle { position: fixed; width: 3px; height: 3px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 0; opacity: 0; animation: particleFade 6s ease-in-out infinite; }
         @keyframes particleFade { 0%, 100% { opacity: 0; transform: translateY(0); } 50% { opacity: 0.3; transform: translateY(-25px); } }
-
-        .dev-footer {
-            position: relative; z-index: 1; text-align: center;
-            padding: 1.25rem 1rem calc(1.25rem + var(--safe-b));
-            border-top: 1px solid var(--border); background: rgba(10,10,18,0.6); backdrop-filter: blur(12px);
-        }
+        .dev-footer { position: relative; z-index: 1; text-align: center; padding: 1.25rem 1rem calc(1.25rem + var(--safe-b)); border-top: 1px solid var(--border); background: rgba(10,10,18,0.6); backdrop-filter: blur(12px); }
         .dev-footer-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        .dev-footer-avatar {
-            width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--card-border);
-            object-fit: cover; object-position: center top; transition: all 0.3s; background: #1a1a2e;
-        }
-        .dev-footer-link {
-            display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
-            color: var(--text-muted); font-size: 0.78rem; font-weight: 500;
-            padding: 5px 14px 5px 5px; border-radius: 99px; border: 1px solid var(--border);
-            background: rgba(255,255,255,0.02); transition: all 0.3s;
-        }
+        .dev-footer-avatar { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--card-border); object-fit: cover; object-position: center top; transition: all 0.3s; background: #1a1a2e; }
+        .dev-footer-link { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text-muted); font-size: 0.78rem; font-weight: 500; padding: 5px 14px 5px 5px; border-radius: 99px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); transition: all 0.3s; }
         .dev-footer-link:hover { color: var(--accent); border-color: var(--card-border); background: rgba(245,158,11,0.05); }
         .dev-footer-link:hover .dev-footer-avatar { border-color: var(--accent); transform: scale(1.08); box-shadow: 0 0 16px rgba(245,158,11,0.2); }
         .dev-footer-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
         .dev-footer-name { font-weight: 600; color: var(--text); transition: color 0.3s; }
         .dev-footer-link:hover .dev-footer-name { color: var(--accent); }
         .dev-footer-role { font-size: 0.68rem; color: var(--text-muted); opacity: 0.7; }
-
         .flex-center-wrap { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
         .flex-row-between { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
         .flex-row-center { display: flex; align-items: center; gap: 10px; }
@@ -291,29 +178,23 @@
         .mt-6 { margin-top: 1.5rem; }
         .mt-sm { margin-top: 0.75rem; }
         .gap-sm { gap: 0.375rem; }
-
         .header-row { display: flex; align-items: center; gap: 12px; margin-bottom: 0.4rem; }
         .header-logo { width: 38px; height: 38px; border-radius: 11px; background: linear-gradient(135deg, var(--accent), var(--accent-hover)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .header-logo i { color: #0a0a12; font-size: 1rem; }
         .header-title { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; }
         .header-sub { color: var(--text-muted); font-size: 0.82rem; padding-left: 50px; }
         .header-margin { margin-bottom: 2rem; }
-
         .file-info-row { display: flex; flex-direction: column; gap: 0.75rem; }
         .file-info-top { display: flex; align-items: center; gap: 12px; min-width: 0; }
         .file-info-meta { flex: 1; min-width: 0; }
         .file-info-stats { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-
         .options-row { display: flex; flex-direction: column; gap: 0.875rem; }
         .option-item { display: flex; align-items: center; gap: 10px; }
-
         .action-buttons { display: flex; flex-direction: column; gap: 0.625rem; }
         .action-buttons .btn { width: 100%; }
-
         .processing-bottom { display: flex; flex-direction: column; gap: 0.75rem; align-items: stretch; }
         .processing-stats { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .processing-cancel { align-self: flex-end; }
-
         @media (min-width: 640px) {
             .main-container { padding: 2rem 1.5rem 1.25rem; }
             .upload-zone { padding: 3.5rem 2rem; }
@@ -509,7 +390,7 @@
         <div class="dev-footer-inner">
             <span class="text-xs text-muted" style="opacity:0.6;">Developed by</span>
             <a href="https://gravatar.com/katragaddasurendra" target="_blank" rel="noopener noreferrer" class="dev-footer-link" aria-label="Developer profile: katragadda Surendra">
-                <img class="dev-footer-avatar" src="https://z-cdn-media.chatglm.cn/files/d71765c0-b5ae-407e-85a8-da109accba00.png?auth_key=1875062122-4d011d59403d4e448418be857d365e2a-0-9e66149d794ace6622809a7c393701ed" alt="katragadda Surendra portrait" loading="lazy" onerror="this.src='https://gravatar.com/avatar/katragaddasurendra?d=identicon&s=64'">
+                <img class="dev-footer-avatar" src="https://z-cdn-media.chatglm.cn/files/d71765c0-b5ae-407e-85a8-da109accba00.png?auth_key=1875062122-4d011d59403d4e448418be857d365e2a-0-9e66149d794ace6622809a7c393701ed" alt="katragadda Surendra" loading="lazy" onerror="this.src='https://gravatar.com/avatar/katragaddasurendra?d=identicon&s=64'">
                 <span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.3;">
                     <span class="dev-footer-name">katragadda Surendra</span>
                     <span class="dev-footer-role">Developer</span>
@@ -522,18 +403,13 @@
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-        /* ===== Application State ===== */
-        var currentFile = null;
-        var currentPdfDoc = null;
-        var extractedData = [];
-        var rawPageItems = [];
-        var alignedData = [];
-        var isAligned = false;
-        var isCancelled = false;
-        var autoDetectColumns = true;
-        var showPageSeparators = false;
+        /* ===== State ===== */
+        var currentFile = null, currentPdfDoc = null;
+        var extractedData = [], rawPageItems = [], alignedData = [];
+        var isAligned = false, isCancelled = false;
+        var autoDetectColumns = true, showPageSeparators = false;
 
-        /* ===== DOM References ===== */
+        /* ===== DOM ===== */
         var uploadZone = document.getElementById('upload-zone');
         var fileInput = document.getElementById('file-input');
         var progressFill = document.getElementById('progress-fill');
@@ -548,9 +424,9 @@
         var toggleColumns = document.getElementById('toggle-columns');
         var toggleSeparators = document.getElementById('toggle-separators');
 
-        /* ===== Background Particles ===== */
+        /* ===== Particles ===== */
         (function() {
-            var container = document.getElementById('particles');
+            var c = document.getElementById('particles');
             for (var i = 0; i < 15; i++) {
                 var p = document.createElement('div');
                 p.className = 'particle';
@@ -559,77 +435,85 @@
                 p.style.animationDelay = (Math.random() * 6) + 's';
                 p.style.animationDuration = (4 + Math.random() * 4) + 's';
                 var sz = (2 + Math.random() * 2) + 'px';
-                p.style.width = sz;
-                p.style.height = sz;
-                container.appendChild(p);
+                p.style.width = sz; p.style.height = sz;
+                c.appendChild(p);
             }
         })();
 
-        /* ===== Toast Notification System ===== */
-        function showToast(message, type) {
+        /* ===== Toast ===== */
+        function showToast(msg, type) {
             type = type || 'info';
-            var iconMap = { success: 'check-circle', error: 'exclamation-circle', info: 'info-circle' };
-            var toast = document.createElement('div');
-            toast.className = 'toast toast-' + type;
-            toast.innerHTML = '<i class="fas fa-' + iconMap[type] + '"></i><span>' + message + '</span>';
-            document.getElementById('toast-container').appendChild(toast);
+            var icons = { success: 'check-circle', error: 'exclamation-circle', info: 'info-circle' };
+            var t = document.createElement('div');
+            t.className = 'toast toast-' + type;
+            t.innerHTML = '<i class="fas fa-' + icons[type] + '"></i><span>' + msg + '</span>';
+            document.getElementById('toast-container').appendChild(t);
             requestAnimationFrame(function() {
-                requestAnimationFrame(function() { toast.classList.add('show'); });
+                requestAnimationFrame(function() { t.classList.add('show'); });
             });
-            setTimeout(function() {
-                toast.classList.remove('show');
-                setTimeout(function() { toast.remove(); }, 400);
-            }, 4500);
+            setTimeout(function() { t.classList.remove('show'); setTimeout(function() { t.remove(); }, 400); }, 4500);
         }
 
-        /* ===== Section Navigation ===== */
         function showSection(id) {
             document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
             document.getElementById(id).classList.add('active');
         }
 
-        /* ===== Utility Helpers ===== */
-        function formatSize(bytes) {
-            if (bytes < 1024) return bytes + ' B';
-            if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-            if (bytes < 1073741824) return (bytes / 1048576).toFixed(1) + ' MB';
-            return (bytes / 1073741824).toFixed(2) + ' GB';
+        /* ===== Helpers ===== */
+        function formatSize(b) {
+            if (b < 1024) return b + ' B';
+            if (b < 1048576) return (b / 1024).toFixed(1) + ' KB';
+            if (b < 1073741824) return (b / 1048576).toFixed(1) + ' MB';
+            return (b / 1073741824).toFixed(2) + ' GB';
         }
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            var div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
+        function escapeHtml(s) {
+            if (!s) return '';
+            var d = document.createElement('div');
+            d.textContent = s;
+            return d.innerHTML;
         }
 
         function readFileAsArrayBuffer(file) {
-            return new Promise(function(resolve, reject) {
-                var reader = new FileReader();
-                reader.onload = function() { resolve(reader.result); };
-                reader.onerror = function() { reject(new Error('Failed to read file')); };
-                reader.readAsArrayBuffer(file);
+            return new Promise(function(res, rej) {
+                var r = new FileReader();
+                r.onload = function() { res(r.result); };
+                r.onerror = function() { rej(new Error('Failed to read file')); };
+                r.readAsArrayBuffer(file);
             });
         }
 
         function updateProgress(pct, text) {
-            var clamped = Math.min(1, Math.max(0, pct));
-            progressFill.style.width = (clamped * 100) + '%';
-            processingPercent.textContent = Math.round(clamped * 100) + '%';
+            var c = Math.min(1, Math.max(0, pct));
+            progressFill.style.width = (c * 100) + '%';
+            processingPercent.textContent = Math.round(c * 100) + '%';
             if (text) processingStatus.textContent = text;
         }
 
-        /* ===== Upload Handlers ===== */
+        function getMaxCols(data) {
+            var mx = 0;
+            for (var i = 0; i < data.length; i++) {
+                if (Array.isArray(data[i]) && data[i].length > mx) mx = data[i].length;
+            }
+            return Math.max(mx, 1);
+        }
+
+        /* Check if a string looks like a number (handles commas, decimals, negatives) */
+        function isNumericString(s) {
+            if (!s || typeof s !== 'string') return false;
+            var trimmed = s.trim();
+            if (trimmed === '' || trimmed === '-' || trimmed === '.') return false;
+            var cleaned = trimmed.replace(/,/g, '');
+            return /^-?\d+(\.\d+)?$/.test(cleaned);
+        }
+
+        /* ===== Upload ===== */
         uploadZone.addEventListener('click', function() { fileInput.click(); });
         uploadZone.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
         });
-        uploadZone.addEventListener('dragover', function(e) {
-            e.preventDefault(); uploadZone.classList.add('drag-over');
-        });
-        uploadZone.addEventListener('dragleave', function(e) {
-            e.preventDefault(); uploadZone.classList.remove('drag-over');
-        });
+        uploadZone.addEventListener('dragover', function(e) { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+        uploadZone.addEventListener('dragleave', function(e) { e.preventDefault(); uploadZone.classList.remove('drag-over'); });
         uploadZone.addEventListener('drop', function(e) {
             e.preventDefault(); uploadZone.classList.remove('drag-over');
             if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
@@ -640,26 +524,27 @@
 
         function handleFile(file) {
             if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
-                showToast('Please upload a valid PDF file', 'error');
-                return;
+                showToast('Please upload a valid PDF file', 'error'); return;
             }
             if (file.size > 500 * 1048576) {
-                showToast('File exceeds 500 MB limit (' + formatSize(file.size) + ')', 'error');
-                return;
+                showToast('File exceeds 500 MB limit (' + formatSize(file.size) + ')', 'error'); return;
             }
             currentFile = file;
             startProcessing();
         }
 
-        /* ===== PDF Processing Pipeline ===== */
-        async function startProcessing() {
-            isCancelled = false;
-            isAligned = false;
-            alignedData = [];
-            rawPageItems = [];
-            resetAiButton();
-            showSection('section-processing');
+        /* ================================================================
+           CORE EXTRACTION — Multi-Strategy Column Detection
+           ================================================================
+           Strategy 1: Position Clustering (best for structured tables like
+                       bank statements, invoices, reports)
+           Strategy 2: Within-Row Gap Analysis (fallback for less structured data)
+           Auto-selects whichever produces more consistent column counts.
+           ================================================================ */
 
+        async function startProcessing() {
+            isCancelled = false; isAligned = false; alignedData = []; rawPageItems = [];
+            resetAiButton(); showSection('section-processing');
             document.getElementById('processing-filename').textContent = currentFile.name;
             document.getElementById('processing-filesize').textContent = formatSize(currentFile.size);
             document.getElementById('stat-pages').textContent = '...';
@@ -667,54 +552,39 @@
             updateProgress(0, 'Reading file...');
 
             try {
-                /* Read file into buffer */
-                var arrayBuffer = await readFileAsArrayBuffer(currentFile);
+                var buf = await readFileAsArrayBuffer(currentFile);
                 if (isCancelled) return;
-
-                /* Load PDF document */
                 updateProgress(0.05, 'Loading PDF...');
-                var pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                var pdf = await pdfjsLib.getDocument({ data: buf }).promise;
                 currentPdfDoc = pdf;
                 if (isCancelled) return;
 
                 var totalPages = pdf.numPages;
                 document.getElementById('stat-pages').textContent = totalPages;
                 updateProgress(0.1, 'Extracting text from ' + totalPages + ' pages...');
-
                 extractedData = [];
-                var totalRows = 0;
-                var emptyPages = 0;
+                var totalRows = 0, emptyPages = 0;
 
-                /* Process each page */
-                for (var pageNum = 1; pageNum <= totalPages; pageNum++) {
+                for (var pg = 1; pg <= totalPages; pg++) {
                     if (isCancelled) return;
-
-                    var page = await pdf.getPage(pageNum);
+                    var page = await pdf.getPage(pg);
                     var textContent = await page.getTextContent();
-
-                    /* Filter to non-empty text items */
-                    var items = textContent.items.filter(function(item) {
-                        return item.str && item.str.trim().length > 0;
+                    var items = textContent.items.filter(function(it) {
+                        return it.str && it.str.trim().length > 0;
                     });
 
-                    /* Store raw items for AI alignment (uses global coordinates) */
-                    items.forEach(function(item) {
+                    items.forEach(function(it) {
                         rawPageItems.push({
-                            text: item.str,
-                            x: item.transform[4],
-                            y: item.transform[5],
-                            width: Math.max(0, item.width || 0),
-                            page: pageNum
+                            text: it.str, x: it.transform[4], y: it.transform[5],
+                            width: Math.max(0, it.width || 0), page: pg
                         });
                     });
 
-                    /* Extract structured data from this page */
-                    var pageData = extractPageDataFromItems(items);
+                    var pageData = extractPageData(items);
 
-                    /* Insert page separator row if enabled */
                     if (showPageSeparators && pageData.length > 0 && extractedData.length > 0) {
                         var sepCols = Math.max(1, getMaxCols(extractedData));
-                        var sepRow = ['--- Page ' + pageNum + ' ---'];
+                        var sepRow = ['--- Page ' + pg + ' ---'];
                         for (var s = 1; s < sepCols; s++) sepRow.push('');
                         extractedData.push(sepRow);
                     }
@@ -722,230 +592,282 @@
                     extractedData = extractedData.concat(pageData);
                     totalRows += pageData.length;
                     if (pageData.length === 0) emptyPages++;
-
                     document.getElementById('stat-rows').textContent = totalRows;
-                    updateProgress(0.1 + (pageNum / totalPages) * 0.85, 'Extracting page ' + pageNum + ' of ' + totalPages + '...');
-
-                    /* Yield to UI every 3 pages */
-                    if (pageNum % 3 === 0) await new Promise(function(r) { setTimeout(r, 0); });
+                    updateProgress(0.1 + (pg / totalPages) * 0.85, 'Extracting page ' + pg + ' of ' + totalPages + '...');
+                    if (pg % 3 === 0) await new Promise(function(r) { setTimeout(r, 0); });
                 }
 
                 if (isCancelled) return;
-
-                /* Validate results */
-                if (emptyPages === totalPages) {
-                    showToast('No extractable text found. The PDF may contain only images.', 'error');
-                    showSection('section-upload');
-                    return;
-                }
-                if (totalRows === 0) {
-                    showToast('No data could be extracted from this PDF.', 'error');
-                    showSection('section-upload');
-                    return;
-                }
-
+                if (emptyPages === totalPages) { showToast('No extractable text found. PDF may contain only images.', 'error'); showSection('section-upload'); return; }
+                if (totalRows === 0) { showToast('No data could be extracted.', 'error'); showSection('section-upload'); return; }
                 updateProgress(1, 'Done!');
-                if (emptyPages > 0) {
-                    showToast(emptyPages + ' page(s) had no extractable text (may be images)', 'info');
-                }
-
+                if (emptyPages > 0) showToast(emptyPages + ' page(s) had no extractable text', 'info');
                 await new Promise(function(r) { setTimeout(r, 250); });
                 showResults();
-
             } catch (err) {
                 if (isCancelled) return;
-                console.error('Processing error:', err);
-                var message = 'Failed to process PDF';
-                if (err.name === 'PasswordException') {
-                    message = 'PDF is password-protected and cannot be opened';
-                } else if (err.message) {
-                    message = err.message;
-                }
-                showToast(message, 'error');
-                showSection('section-upload');
+                console.error(err);
+                var msg = 'Failed to process PDF';
+                if (err.name === 'PasswordException') msg = 'PDF is password-protected';
+                else if (err.message) msg = err.message;
+                showToast(msg, 'error'); showSection('section-upload');
             }
         }
 
         btnCancel.addEventListener('click', function() {
-            isCancelled = true;
-            showToast('Conversion cancelled', 'info');
+            isCancelled = true; showToast('Conversion cancelled', 'info');
             if (currentPdfDoc) { currentPdfDoc.destroy(); currentPdfDoc = null; }
             showSection('section-upload');
         });
 
-        /* ===== Text Extraction & Column Detection (Per-Page) ===== */
-        function extractPageDataFromItems(items) {
+        /* ===== Per-Page Extraction with Multi-Strategy Detection ===== */
+        function extractPageData(items) {
             if (items.length === 0) return [];
 
-            /* Calculate average character width from rendered text */
-            var totalWidth = 0, totalChars = 0;
-            items.forEach(function(item) {
-                if (item.str.length > 0 && item.width > 0) {
-                    totalWidth += item.width;
-                    totalChars += item.str.length;
-                }
+            /* Calculate average character width */
+            var totalW = 0, totalC = 0;
+            items.forEach(function(it) {
+                if (it.str.length > 0 && it.width > 0) { totalW += it.width; totalC += it.str.length; }
             });
-            var avgCharWidth = totalChars > 0 ? totalWidth / totalChars : 5;
+            var avgCW = totalC > 0 ? totalW / totalC : 5;
 
-            /* Group items into rows by quantized Y position (2px buckets) */
+            /* Group items into rows by Y position */
             var rowMap = new Map();
-            items.forEach(function(item) {
-                var yKey = Math.round(item.transform[5] / 2) * 2;
+            items.forEach(function(it) {
+                var yKey = Math.round(it.transform[5] / 2) * 2;
                 if (!rowMap.has(yKey)) rowMap.set(yKey, []);
-                rowMap.get(yKey).push({
-                    text: item.str,
-                    x: item.transform[4],
-                    width: Math.max(0, item.width || 0)
-                });
+                rowMap.get(yKey).push({ text: it.str, x: it.transform[4], width: Math.max(0, it.width || 0) });
             });
 
-            var sortedYKeys = Array.from(rowMap.keys()).sort(function(a, b) { return b - a; });
-            var rows = sortedYKeys.map(function(yKey) {
-                var rowItems = rowMap.get(yKey).sort(function(a, b) { return a.x - b.x; });
-                return groupWordsIntoCells(rowItems, avgCharWidth * 2.5);
-            });
+            var sortedYs = Array.from(rowMap.keys()).sort(function(a, b) { return b - a; });
+            var wordThresh = Math.max(avgCW * 2.5, 8);
+            var rows = sortedYs.map(function(yKey) {
+                var ri = rowMap.get(yKey).sort(function(a, b) { return a.x - b.x; });
+                return groupWords(ri, wordThresh);
+            }).filter(function(r) { return r.length > 0; });
 
-            /* Filter out empty rows */
-            rows = rows.filter(function(row) { return row.length > 0; });
             if (rows.length === 0) return [];
 
-            /* No column detection — single column mode */
+            /* No column detection mode */
             if (!autoDetectColumns) {
-                return rows.map(function(row) {
-                    return [row.map(function(cell) { return cell.text; }).join(' ')];
-                });
+                return rows.map(function(r) { return [r.map(function(c) { return c.text; }).join(' ')]; });
             }
 
-            /* Detect column boundaries using within-row gap analysis */
-            var boundaries = detectColumnBoundaries(rows, avgCharWidth);
+            /* Multi-strategy column detection */
+            var boundaries = multiStrategyDetectColumns(rows, avgCW);
 
-            /* Assign each cell to a column */
-            var table = rows.map(function(row) { return assignCellsToColumns(row, boundaries); });
+            /* Assign cells to columns */
+            var table = rows.map(function(r) { return assignToColumns(r, boundaries); });
 
-            /* Normalize all rows to the same column count */
+            /* Normalize to uniform column count */
             var maxCols = getMaxCols(table);
-            table.forEach(function(row) {
-                while (row.length < maxCols) row.push('');
-            });
+            for (var i = 0; i < table.length; i++) {
+                while (table[i].length < maxCols) table[i].push('');
+            }
 
             return table;
         }
 
-        /* Group adjacent words into single cells based on gap threshold */
-        function groupWordsIntoCells(sortedItems, gapThreshold) {
+        /* Group adjacent words into cells */
+        function groupWords(sortedItems, thresh) {
             if (sortedItems.length === 0) return [];
-            var cells = [];
-            var currentGroup = [sortedItems[0]];
-
+            var groups = [], cur = [sortedItems[0]];
             for (var i = 1; i < sortedItems.length; i++) {
                 var gap = sortedItems[i].x - (sortedItems[i - 1].x + sortedItems[i - 1].width);
-                if (gap > gapThreshold) {
-                    cells.push(mergeGroupIntoCell(currentGroup));
-                    currentGroup = [sortedItems[i]];
+                if (gap > thresh) { groups.push(mergeCells(cur)); cur = [sortedItems[i]]; }
+                else cur.push(sortedItems[i]);
+            }
+            groups.push(mergeCells(cur));
+            return groups;
+        }
+
+        function mergeCells(items) {
+            var text = items.map(function(g) { return g.text; }).join(' ').trim();
+            return { text: text, x: items[0].x, width: items[items.length - 1].x + items[items.length - 1].width - items[0].x };
+        }
+
+        /* ===== MULTI-STRATEGY COLUMN DETECTION ===== */
+        function multiStrategyDetectColumns(rows, avgCW) {
+            /* Strategy 1: Position Clustering — cluster cell START positions into column regions */
+            var clusterBounds = detectByPositionClustering(rows, avgCW);
+
+            /* Strategy 2: Within-Row Gap Analysis — find large gaps between cells in the same row */
+            var gapBounds = detectByGapAnalysis(rows, avgCW);
+
+            /* Evaluate: run both and pick the one producing more uniform column counts */
+            var score1 = scoreBoundaries(rows, clusterBounds);
+            var score2 = scoreBoundaries(rows, gapBounds);
+
+            /* Pick the winner; if tied, prefer more columns (more granular) */
+            if (score1.consistency >= score2.consistency) {
+                if (clusterBounds.length >= gapBounds.length) return clusterBounds;
+                return gapBounds;
+            } else {
+                if (gapBounds.length >= clusterBounds.length) return gapBounds;
+                return clusterBounds;
+            }
+        }
+
+        /* Score: what fraction of rows have the most common column count */
+        function scoreBoundaries(rows, bounds) {
+            if (bounds.length === 0) return { consistency: 0, colCount: 1 };
+            var counts = {};
+            rows.forEach(function(row) {
+                var assigned = assignToColumns(row, bounds);
+                counts[assigned.length] = (counts[assigned.length] || 0) + 1;
+            });
+            var bestCount = 0, bestFreq = 0;
+            for (var c in counts) {
+                if (counts[c] > bestFreq) { bestFreq = counts[c]; bestCount = parseInt(c); }
+            }
+            return { consistency: bestFreq / rows.length, colCount: bestCount };
+        }
+
+        /* STRATEGY 1: Position Clustering
+           Clusters all cell start-X positions into groups.
+           Groups that are far apart represent different columns.
+           Works great for bank statements, invoices, tables. */
+        function detectByPositionClustering(rows, avgCW) {
+            /* Collect all non-empty cell start positions */
+            var starts = [];
+            rows.forEach(function(row) {
+                row.forEach(function(cell) {
+                    if (cell.text.length > 0) starts.push(cell.x);
+                });
+            });
+            if (starts.length < 2) return [];
+
+            starts.sort(function(a, b) { return a - b; });
+
+            /* Calculate gaps between consecutive start positions */
+            var gaps = [];
+            for (var i = 1; i < starts.length; i++) {
+                gaps.push(starts[i] - starts[i - 1]);
+            }
+            gaps.sort(function(a, b) { return a - b; });
+
+            /* Find the natural break between "within-column" gaps and "between-column" gaps */
+            var p60 = gaps[Math.floor(gaps.length * 0.60)];
+            var p75 = gaps[Math.floor(gaps.length * 0.75)];
+            var p90 = gaps[Math.floor(gaps.length * 0.90)];
+
+            var clusterThresh;
+            if (p90 > p75 * 1.8 && p75 > p60 * 1.3) {
+                /* Clear bimodal distribution */
+                clusterThresh = (p75 + p90) / 2;
+            } else {
+                clusterThresh = Math.max(p75 * 2.5, p60 * 4);
+            }
+            clusterThresh = Math.max(clusterThresh, avgCW * 5, 12);
+
+            /* Build clusters */
+            var clusters = [];
+            var curCluster = [starts[0]];
+            for (var i = 1; i < starts.length; i++) {
+                if (starts[i] - starts[i - 1] < clusterThresh) {
+                    curCluster.push(starts[i]);
                 } else {
-                    currentGroup.push(sortedItems[i]);
+                    clusters.push(curCluster);
+                    curCluster = [starts[i]];
                 }
             }
-            cells.push(mergeGroupIntoCell(currentGroup));
-            return cells;
+            clusters.push(curCluster);
+
+            /* Filter noise clusters: must have at least 2 members or represent ≥3% of rows */
+            var minSize = Math.max(2, Math.floor(rows.length * 0.03));
+            var validClusters = clusters.filter(function(cl) { return cl.length >= minSize; });
+
+            /* If filtering removed too many clusters, keep all */
+            if (validClusters.length < 2 && clusters.length >= 2) {
+                validClusters = clusters;
+            }
+            if (validClusters.length < 2) return [];
+
+            /* Boundaries = midpoints between consecutive clusters */
+            var boundaries = [];
+            for (var i = 0; i < validClusters.length - 1; i++) {
+                var maxCur = Math.max.apply(null, validClusters[i]);
+                var minNext = Math.min.apply(null, validClusters[i + 1]);
+                boundaries.push((maxCur + minNext) / 2);
+            }
+
+            return boundaries;
         }
 
-        function mergeGroupIntoCell(items) {
-            var text = items.map(function(g) { return g.text; }).join(' ').trim();
-            return {
-                text: text,
-                x: items[0].x,
-                width: items[items.length - 1].x + items[items.length - 1].width - items[0].x
-            };
-        }
-
-        /* Detect column boundaries from within-row gaps between cells */
-        function detectColumnBoundaries(rows, avgCharWidth) {
-            /* Collect gaps that appear between consecutive cells WITHIN each row */
+        /* STRATEGY 2: Within-Row Gap Analysis
+           Finds large gaps between consecutive cells WITHIN each row.
+           Clusters those gap positions to find consistent column boundaries. */
+        function detectByGapAnalysis(rows, avgCW) {
             var allGaps = [];
             rows.forEach(function(row) {
                 if (row.length < 2) return;
                 for (var i = 1; i < row.length; i++) {
                     var gap = row[i].x - (row[i - 1].x + row[i - 1].width);
                     if (gap > 0) {
-                        allGaps.push({
-                            pos: row[i - 1].x + row[i - 1].width + gap / 2,
-                            size: gap
-                        });
+                        allGaps.push({ pos: row[i - 1].x + row[i - 1].width + gap / 2, size: gap });
                     }
                 }
             });
-
             if (allGaps.length === 0) return [];
 
-            /* Sort gap sizes to find natural distribution break */
-            var sortedSizes = allGaps.map(function(g) { return g.size; }).sort(function(a, b) { return a - b; });
-            var p50 = sortedSizes[Math.floor(sortedSizes.length * 0.50)];
-            var p70 = sortedSizes[Math.floor(sortedSizes.length * 0.70)];
-            var p85 = sortedSizes[Math.floor(sortedSizes.length * 0.85)];
+            var sizes = allGaps.map(function(g) { return g.size; }).sort(function(a, b) { return a - b; });
+            var p50 = sizes[Math.floor(sizes.length * 0.50)];
+            var p70 = sizes[Math.floor(sizes.length * 0.70)];
+            var p85 = sizes[Math.floor(sizes.length * 0.85)];
 
-            /* Adaptive threshold: detect bimodal distribution */
             var threshold;
             if (p85 > p70 * 2.2 && p70 > p50 * 1.3) {
                 threshold = (p70 + p85) / 2;
             } else {
                 threshold = Math.max(p70 * 2, p50 * 3);
             }
-            threshold = Math.max(threshold, avgCharWidth * 4, 18);
+            threshold = Math.max(threshold, avgCW * 4, 18);
 
-            /* Keep only large gaps (column boundaries) */
             var bigGaps = allGaps.filter(function(g) { return g.size >= threshold; });
             if (bigGaps.length === 0) return [];
 
             /* Cluster nearby boundary positions */
             bigGaps.sort(function(a, b) { return a.pos - b.pos; });
             var clusters = [];
-            var clusterDistance = avgCharWidth * 6;
-
+            var cDist = avgCW * 6;
             bigGaps.forEach(function(gap) {
                 var merged = false;
                 for (var i = 0; i < clusters.length; i++) {
-                    if (Math.abs(gap.pos - clusters[i].pos) < clusterDistance) {
+                    if (Math.abs(gap.pos - clusters[i].pos) < cDist) {
                         clusters[i].pos = (clusters[i].pos * clusters[i].count + gap.pos) / (clusters[i].count + 1);
                         clusters[i].count++;
-                        merged = true;
-                        break;
+                        merged = true; break;
                     }
                 }
-                if (!merged) {
-                    clusters.push({ pos: gap.pos, count: 1 });
-                }
+                if (!merged) clusters.push({ pos: gap.pos, count: 1 });
             });
 
-            /* Keep boundaries that appear in at least 15% of rows (min 2) */
-            var minFrequency = Math.max(2, Math.floor(rows.length * 0.15));
-            var boundaries = clusters
-                .filter(function(c) { return c.count >= minFrequency; })
+            var minFreq = Math.max(2, Math.floor(rows.length * 0.12));
+            var bounds = clusters
+                .filter(function(c) { return c.count >= minFreq; })
                 .sort(function(a, b) { return a.pos - b.pos; })
                 .map(function(c) { return c.pos; });
 
-            /* Relaxed fallback if too strict */
-            if (boundaries.length === 0) {
-                var relaxedFreq = Math.max(1, Math.floor(rows.length * 0.05));
-                boundaries = clusters
-                    .filter(function(c) { return c.count >= relaxedFreq; })
+            if (bounds.length === 0) {
+                var relaxed = Math.max(1, Math.floor(rows.length * 0.04));
+                bounds = clusters
+                    .filter(function(c) { return c.count >= relaxed; })
                     .sort(function(a, b) { return a.pos - b.pos; })
                     .map(function(c) { return c.pos; });
             }
-
-            return boundaries;
+            return bounds;
         }
 
-        /* Assign each text cell to the correct column based on boundary positions */
-        function assignCellsToColumns(cells, boundaries) {
-            if (boundaries.length === 0) {
+        /* Assign each cell to a column based on boundary positions */
+        function assignToColumns(cells, bounds) {
+            if (!bounds || bounds.length === 0) {
                 return [cells.map(function(c) { return c.text; }).join(' ')];
             }
             var row = [];
             cells.forEach(function(cell) {
                 var col = 0;
-                for (var i = 0; i < boundaries.length; i++) {
-                    if (cell.x >= boundaries[i]) col = i + 1;
+                for (var i = 0; i < bounds.length; i++) {
+                    if (cell.x >= bounds[i]) col = i + 1;
                     else break;
                 }
                 while (row.length <= col) row.push('');
@@ -954,257 +876,96 @@
             return row.map(function(c) { return c.trim(); });
         }
 
-        /* Get the maximum column count across all rows */
-        function getMaxCols(data) {
-            var max = 0;
-            data.forEach(function(row) {
-                if (Array.isArray(row) && row.length > max) max = row.length;
-            });
-            return Math.max(max, 1);
-        }
-
-        /* ===== AI Column Alignment (Global Cross-Page Analysis) ===== */
+        /* ===== AI Alignment (Global Cross-Page) ===== */
         function aiAlignData() {
             if (rawPageItems.length === 0) return extractedData.slice();
-
             var allItems = rawPageItems;
 
-            /* Calculate average character width */
-            var totalWidth = 0, totalChars = 0;
-            allItems.forEach(function(item) {
-                if (item.text.length > 0 && item.width > 0) {
-                    totalWidth += item.width;
-                    totalChars += item.text.length;
-                }
+            var totalW = 0, totalC = 0;
+            allItems.forEach(function(it) {
+                if (it.text.length > 0 && it.width > 0) { totalW += it.width; totalC += it.text.length; }
             });
-            var avgCharWidth = totalChars > 0 ? totalWidth / totalChars : 5;
+            var avgCW = totalC > 0 ? totalW / totalC : 5;
 
-            /* Group all items into rows by Y position (1px quantization for global merge) */
+            /* Merge all items into global rows (1px Y buckets, merge within 3px) */
             var rowMap = new Map();
-            allItems.forEach(function(item) {
-                var yKey = Math.round(item.y);
-                if (!rowMap.has(yKey)) rowMap.set(yKey, []);
-                rowMap.get(yKey).push({
-                    text: item.text,
-                    x: item.x,
-                    width: item.width,
-                    page: item.page
-                });
+            allItems.forEach(function(it) {
+                var y = Math.round(it.y);
+                if (!rowMap.has(y)) rowMap.set(y, []);
+                rowMap.get(y).push({ text: it.text, x: it.x, width: it.width, page: it.page });
             });
-
-            var sortedYKeys = Array.from(rowMap.keys()).sort(function(a, b) { return b - a; });
-
-            /* Merge adjacent Y-buckets (within 3px) to handle slight PDF positioning drift */
-            var mergedRows = [];
-            var currentRow = rowMap.get(sortedYKeys[0]).slice();
-            for (var i = 1; i < sortedYKeys.length; i++) {
-                if (Math.abs(sortedYKeys[i] - sortedYKeys[i - 1]) <= 3) {
-                    currentRow = currentRow.concat(rowMap.get(sortedYKeys[i]));
-                } else {
-                    mergedRows.push(currentRow);
-                    currentRow = rowMap.get(sortedYKeys[i]).slice();
-                }
+            var sortedYs = Array.from(rowMap.keys()).sort(function(a, b) { return b - a; });
+            var mergedRows = [], curRow = rowMap.get(sortedYs[0]).slice();
+            for (var i = 1; i < sortedYs.length; i++) {
+                if (Math.abs(sortedYs[i] - sortedYs[i - 1]) <= 3) {
+                    curRow = curRow.concat(rowMap.get(sortedYs[i]));
+                } else { mergedRows.push(curRow); curRow = rowMap.get(sortedYs[i]).slice(); }
             }
-            mergedRows.push(currentRow);
+            mergedRows.push(curRow);
+            mergedRows.forEach(function(r) { r.sort(function(a, b) { return a.x - b.x; }); });
 
-            /* Sort each row's items by X position */
-            mergedRows.forEach(function(row) { row.sort(function(a, b) { return a.x - b.x; }); });
+            /* Multi-strategy detection across all pages */
+            var wordThresh = Math.max(avgCW * 2.5, 8);
+            var cellRows = mergedRows.map(function(ri) { return groupWords(ri, wordThresh); })
+                .filter(function(r) { return r.length > 0; });
+            var boundaries = multiStrategyDetectColumns(cellRows, avgCW);
 
-            /* Detect column boundaries using same within-row gap method (but across ALL pages) */
-            var allGaps = [];
-            mergedRows.forEach(function(row) {
-                if (row.length < 2) return;
-                for (var i = 1; i < row.length; i++) {
-                    var gap = row[i].x - (row[i - 1].x + row[i - 1].width);
-                    if (gap > 0) {
-                        allGaps.push({
-                            pos: row[i - 1].x + row[i - 1].width + gap / 2,
-                            size: gap
-                        });
-                    }
-                }
-            });
-
-            if (allGaps.length === 0) {
-                return mergedRows.map(function(row) {
-                    return [row.map(function(it) { return it.text; }).join(' ')];
-                });
-            }
-
-            var sortedSizes = allGaps.map(function(g) { return g.size; }).sort(function(a, b) { return a - b; });
-            var p50 = sortedSizes[Math.floor(sortedSizes.length * 0.50)];
-            var p70 = sortedSizes[Math.floor(sortedSizes.length * 0.70)];
-            var p85 = sortedSizes[Math.floor(sortedSizes.length * 0.85)];
-            var threshold;
-            if (p85 > p70 * 2.2 && p70 > p50 * 1.3) {
-                threshold = (p70 + p85) / 2;
-            } else {
-                threshold = Math.max(p70 * 2, p50 * 3);
-            }
-            threshold = Math.max(threshold, avgCharWidth * 4, 18);
-
-            var bigGaps = allGaps.filter(function(g) { return g.size >= threshold; });
-            if (bigGaps.length === 0) {
-                return mergedRows.map(function(row) {
-                    return [row.map(function(it) { return it.text; }).join(' ')];
-                });
-            }
-
-            /* Cluster boundary positions */
-            bigGaps.sort(function(a, b) { return a.pos - b.pos; });
-            var clusters = [];
-            var clusterDistance = avgCharWidth * 6;
-            bigGaps.forEach(function(gap) {
-                var merged = false;
-                for (var i = 0; i < clusters.length; i++) {
-                    if (Math.abs(gap.pos - clusters[i].pos) < clusterDistance) {
-                        clusters[i].pos = (clusters[i].pos * clusters[i].count + gap.pos) / (clusters[i].count + 1);
-                        clusters[i].count++;
-                        merged = true;
-                        break;
-                    }
-                }
-                if (!merged) clusters.push({ pos: gap.pos, count: 1 });
-            });
-
-            var minFreq = Math.max(2, Math.floor(mergedRows.length * 0.15));
-            var boundaries = clusters
-                .filter(function(c) { return c.count >= minFreq; })
-                .sort(function(a, b) { return a.pos - b.pos; })
-                .map(function(c) { return c.pos; });
-
-            if (boundaries.length === 0) {
-                var relaxedFreq = Math.max(1, Math.floor(mergedRows.length * 0.05));
-                boundaries = clusters
-                    .filter(function(c) { return c.count >= relaxedFreq; })
-                    .sort(function(a, b) { return a.pos - b.pos; })
-                    .map(function(c) { return c.pos; });
-            }
-
-            /* Group words into cells, then assign to columns */
-            var wordThresh = Math.max(avgCharWidth * 2.5, 8);
-            var tableRows = mergedRows.map(function(rowItems) {
-                var groups = [];
-                var currentGroup = [rowItems[0]];
-                for (var i = 1; i < rowItems.length; i++) {
-                    var gap = rowItems[i].x - (rowItems[i - 1].x + rowItems[i - 1].width);
-                    if (gap > wordThresh) {
-                        groups.push({
-                            text: currentGroup.map(function(g) { return g.text; }).join(' ').trim(),
-                            x: currentGroup[0].x,
-                            width: currentGroup[currentGroup.length - 1].x + currentGroup[currentGroup.length - 1].width - currentGroup[0].x
-                        });
-                        currentGroup = [rowItems[i]];
-                    } else {
-                        currentGroup.push(rowItems[i]);
-                    }
-                }
-                groups.push({
-                    text: currentGroup.map(function(g) { return g.text; }).join(' ').trim(),
-                    x: currentGroup[0].x,
-                    width: currentGroup[currentGroup.length - 1].x + currentGroup[currentGroup.length - 1].width - currentGroup[0].x
-                });
-
-                var cells = [];
-                groups.forEach(function(g) {
-                    var col = 0;
-                    for (var j = 0; j < boundaries.length; j++) {
-                        if (g.x >= boundaries[j]) col = j + 1;
-                        else break;
-                    }
-                    while (cells.length <= col) cells.push('');
-                    cells[col] += (cells[col] ? ' ' : '') + g.text;
-                });
-                return cells.map(function(c) { return c.trim(); });
-            });
-
-            /* Filter out completely empty rows */
-            var filtered = tableRows.filter(function(row) {
-                return row.some(function(cell) { return cell.length > 0; });
-            });
+            /* Assign to columns */
+            var tableRows = cellRows.map(function(row) { return assignToColumns(row, boundaries); });
+            var filtered = tableRows.filter(function(r) { return r.some(function(c) { return c.length > 0; }); });
             if (filtered.length === 0) return extractedData.slice();
 
-            /* Determine target column count by frequency analysis */
+            /* Determine target column count by frequency */
             var freq = {};
-            filtered.forEach(function(row) {
-                var c = row.length;
-                freq[c] = (freq[c] || 0) + 1;
-            });
-            var targetCols = 0, maxFreq = 0;
-            for (var c in freq) {
-                if (freq[c] > maxFreq) { maxFreq = freq[c]; targetCols = parseInt(c); }
-            }
-
-            /* Fallback: check multi-column rows if target is 1 */
+            filtered.forEach(function(r) { var c = r.length; freq[c] = (freq[c] || 0) + 1; });
+            var targetCols = 0, maxF = 0;
+            for (var c in freq) { if (freq[c] > maxF) { maxF = freq[c]; targetCols = parseInt(c); } }
             if (targetCols <= 1) {
-                var multiColRows = filtered.filter(function(row) { return row.length > 1; });
-                if (multiColRows.length > 0) {
-                    var freq2 = {};
-                    multiColRows.forEach(function(row) {
-                        var c = row.length;
-                        freq2[c] = (freq2[c] || 0) + 1;
-                    });
-                    var best = 0, bestFreq = 0;
-                    for (var c in freq2) {
-                        if (freq2[c] > bestFreq) { bestFreq = freq2[c]; best = parseInt(c); }
-                    }
-                    if (best > 1) targetCols = best;
+                var multi = filtered.filter(function(r) { return r.length > 1; });
+                if (multi.length > 0) {
+                    var f2 = {}; multi.forEach(function(r) { var c = r.length; f2[c] = (f2[c] || 0) + 1; });
+                    var b = 0, bf = 0; for (var c in f2) { if (f2[c] > bf) { bf = f2[c]; b = parseInt(c); } }
+                    if (b > 1) targetCols = b;
                 }
             }
 
-            /* Normalize all rows to target column count */
+            /* Normalize */
             var normalized = filtered.map(function(row) {
                 if (row.length === targetCols) return row;
-
                 if (row.length < targetCols) {
-                    /* Try splitting the longest cell to fill missing columns */
-                    var widestIdx = 0, widestLen = 0;
-                    row.forEach(function(cell, idx) {
-                        if (cell.length > widestLen) { widestLen = cell.length; widestIdx = idx; }
-                    });
-                    var cellText = row[widestIdx];
-                    var parts = cellText.split(/\s{2,}|,\s*|\t/);
-
+                    var wi = 0, wl = 0;
+                    row.forEach(function(cell, idx) { if (cell.length > wl) { wl = cell.length; wi = idx; } });
+                    var parts = row[wi].split(/\s{2,}|,\s*|\t/);
                     if (parts.length >= targetCols - row.length + 1) {
-                        var newRow = row.slice();
-                        var needed = targetCols - newRow.length;
-                        for (var s = 1; s < needed && s < parts.length; s++) {
-                            newRow.splice(widestIdx + s, 0, parts[s].trim());
-                        }
-                        var remainder = parts.slice(needed).join(' ').trim();
-                        if (remainder) newRow[newRow.length - 1] += ' ' + remainder;
-                        while (newRow.length < targetCols) newRow.push('');
-                        return newRow.slice(0, targetCols);
+                        var nr = row.slice(); var needed = targetCols - nr.length;
+                        for (var s = 1; s < needed && s < parts.length; s++) nr.splice(wi + s, 0, parts[s].trim());
+                        var rest = parts.slice(needed).join(' ').trim();
+                        if (rest) nr[nr.length - 1] += ' ' + rest;
+                        while (nr.length < targetCols) nr.push('');
+                        return nr.slice(0, targetCols);
                     }
-                    var paddedRow = row.slice();
-                    while (paddedRow.length < targetCols) paddedRow.push('');
-                    return paddedRow;
+                    var padded = row.slice(); while (padded.length < targetCols) padded.push('');
+                    return padded;
                 }
-
-                /* Row has too many columns — merge extras into last column */
-                var trimmedRow = row.slice(0, targetCols - 1);
-                trimmedRow.push(row.slice(targetCols - 1).join(' '));
-                return trimmedRow;
+                var trimmed = row.slice(0, targetCols - 1);
+                trimmed.push(row.slice(targetCols - 1).join(' '));
+                return trimmed;
             });
 
-            /* Detect header row (short text cells, few numeric cells, mostly unique) */
+            /* Detect header */
             var headerIdx = -1;
             for (var i = 0; i < Math.min(8, normalized.length); i++) {
-                var row = normalized[i];
-                if (row.length < 2) continue;
-                var shortCells = row.filter(function(c) { return c.length > 0 && c.length < 50; }).length;
-                var numericCells = row.filter(function(c) { return /\d{4,}/.test(c); }).length;
-                var uniqueCells = new Set(row.filter(function(c) { return c.length > 0; })).size;
-                if (shortCells >= row.length * 0.6 && numericCells <= Math.max(1, row.length * 0.2) && uniqueCells >= row.length * 0.7) {
-                    headerIdx = i;
-                    break;
+                var row = normalized[i]; if (row.length < 2) continue;
+                var short = row.filter(function(c) { return c.length > 0 && c.length < 50; }).length;
+                var nums = row.filter(function(c) { return /\d{4,}/.test(c); }).length;
+                var uniq = new Set(row.filter(function(c) { return c.length > 0; })).size;
+                if (short >= row.length * 0.6 && nums <= Math.max(1, row.length * 0.2) && uniq >= row.length * 0.7) {
+                    headerIdx = i; break;
                 }
             }
-            if (headerIdx === -1 && normalized.length > 0 && normalized[0].length === targetCols) {
-                headerIdx = 0;
-            }
+            if (headerIdx === -1 && normalized.length > 0 && normalized[0].length === targetCols) headerIdx = 0;
 
-            /* Clean noise rows */
+            /* Clean noise */
             var cleaned = normalized.filter(function(row, idx) {
                 if (row.length === 1 && row[0].length > 80 && idx !== headerIdx) return false;
                 if (row.length === 1 && /^\d{1,4}$/.test(row[0].trim())) return false;
@@ -1212,68 +973,41 @@
                 return true;
             });
 
-            /* Re-check target column count after cleaning */
+            /* Final column count re-check */
             var finalTarget = targetCols;
             if (cleaned.length > 0) {
-                var freq3 = {};
-                cleaned.forEach(function(row) {
-                    var c = row.length;
-                    freq3[c] = (freq3[c] || 0) + 1;
-                });
-                var bestFinal = 0, bestFinalFreq = 0;
-                for (var c in freq3) {
-                    if (freq3[c] > bestFinalFreq) { bestFinalFreq = freq3[c]; bestFinal = parseInt(c); }
-                }
-                if (bestFinal > finalTarget) finalTarget = bestFinal;
+                var f3 = {}; cleaned.forEach(function(r) { var c = r.length; f3[c] = (f3[c] || 0) + 1; });
+                var bf = 0, bfv = 0; for (var c in f3) { if (f3[c] > bfv) { bfv = f3[c]; bf = parseInt(c); } }
+                if (bf > finalTarget) finalTarget = bf;
             }
 
-            /* Final normalization */
-            var finalData = cleaned.map(function(row) {
+            var final_ = cleaned.map(function(row) {
                 if (row.length === finalTarget) return row;
-                if (row.length < finalTarget) {
-                    var r = row.slice();
-                    while (r.length < finalTarget) r.push('');
-                    return r;
-                }
-                var r2 = row.slice(0, finalTarget - 1);
-                r2.push(row.slice(finalTarget - 1).join(' '));
+                if (row.length < finalTarget) { var r = row.slice(); while (r.length < finalTarget) r.push(''); return r; }
+                var r2 = row.slice(0, finalTarget - 1); r2.push(row.slice(finalTarget - 1).join(' '));
                 return r2;
             });
 
-            return finalData.filter(function(row) {
-                return row.some(function(c) { return c.length > 0; });
-            });
+            return final_.filter(function(r) { return r.some(function(c) { return c.length > 0; }); });
         }
 
-        /* ===== AI Align Button Handler ===== */
         btnAiAlign.addEventListener('click', function() {
-            if (rawPageItems.length === 0) {
-                showToast('No raw data available for alignment', 'error');
-                return;
-            }
-            aiOverlay.classList.add('active');
-            btnAiAlign.disabled = true;
-
+            if (rawPageItems.length === 0) { showToast('No raw data available', 'error'); return; }
+            aiOverlay.classList.add('active'); btnAiAlign.disabled = true;
             setTimeout(function() {
                 try {
-                    alignedData = aiAlignData();
-                    isAligned = true;
+                    alignedData = aiAlignData(); isAligned = true;
                     btnAiAlign.classList.add('aligned');
                     btnAiAlign.innerHTML = '<i class="fas fa-check-circle"></i> <span>Aligned</span>';
                     var badge = document.getElementById('state-badge');
-                    badge.className = 'state-badge aligned';
-                    badge.innerHTML = 'AI ALIGNED';
+                    badge.className = 'state-badge aligned'; badge.innerHTML = 'AI ALIGNED';
                     renderPreview(alignedData, true);
-                    var maxCols = getMaxCols(alignedData);
                     document.getElementById('result-rows').textContent = alignedData.length;
-                    document.getElementById('result-cols').textContent = maxCols;
-                    aiOverlay.classList.remove('active');
-                    btnAiAlign.disabled = false;
-                    showToast('AI Alignment: ' + alignedData.length + ' rows, ' + maxCols + ' columns', 'success');
+                    document.getElementById('result-cols').textContent = getMaxCols(alignedData);
+                    aiOverlay.classList.remove('active'); btnAiAlign.disabled = false;
+                    showToast('AI: ' + alignedData.length + ' rows \u00D7 ' + getMaxCols(alignedData) + ' columns', 'success');
                 } catch (err) {
-                    console.error('AI Alignment error:', err);
-                    aiOverlay.classList.remove('active');
-                    btnAiAlign.disabled = false;
+                    console.error(err); aiOverlay.classList.remove('active'); btnAiAlign.disabled = false;
                     showToast('Alignment failed: ' + err.message, 'error');
                 }
             }, 80);
@@ -1289,8 +1023,7 @@
 
         /* ===== Show Results ===== */
         function showResults() {
-            showSection('section-results');
-            resetAiButton();
+            showSection('section-results'); resetAiButton();
             document.getElementById('result-filename').textContent = currentFile.name;
             document.getElementById('result-filesize').textContent = formatSize(currentFile.size);
             document.getElementById('result-pages').textContent = currentPdfDoc ? currentPdfDoc.numPages : '?';
@@ -1299,61 +1032,67 @@
             renderPreview(extractedData, false);
         }
 
-        /* ===== Preview Table Rendering ===== */
+        /* ===== Preview ===== */
         function renderPreview(data, isAi) {
             var maxCols = getMaxCols(data);
-            var previewRows = data.slice(0, 50);
+            var preview = data.slice(0, 50);
             var thead = document.getElementById('preview-thead');
             var thCls = isAi ? ' class="ai-header"' : '';
-            var headerHtml = '<tr>';
+            var hh = '<tr>';
             for (var c = 0; c < maxCols; c++) {
-                var headerText = (previewRows[0] && previewRows[0][c]) ? previewRows[0][c] : 'Column ' + (c + 1);
-                headerHtml += '<th' + thCls + '>' + escapeHtml(headerText) + '</th>';
+                var txt = (preview[0] && preview[0][c]) ? preview[0][c] : 'Column ' + (c + 1);
+                hh += '<th' + thCls + '>' + escapeHtml(txt) + '</th>';
             }
-            headerHtml += '</tr>';
-            thead.innerHTML = headerHtml;
+            hh += '</tr>'; thead.innerHTML = hh;
+
+            /* Build numeric column detection: check if most non-empty cells in each column are numeric */
+            var numCols = {};
+            for (var c = 0; c < maxCols; c++) {
+                var numCount = 0, total = 0;
+                for (var r = 1; r < preview.length; r++) {
+                    var v = (preview[r] && preview[r][c]) ? preview[r][c].trim() : '';
+                    if (v.length > 0) { total++; if (isNumericString(v)) numCount++; }
+                }
+                if (total > 2 && numCount / total > 0.6) numCols[c] = true;
+            }
 
             var tbody = document.getElementById('preview-tbody');
-            var bodyHtml = '';
-            var startIdx = (previewRows.length > 1 && isAi) ? 1 : 0;
-            for (var r = startIdx; r < previewRows.length; r++) {
-                var row = previewRows[r];
+            var bh = '';
+            var startIdx = (preview.length > 1 && isAi) ? 1 : 0;
+            for (var r = startIdx; r < preview.length; r++) {
+                var row = preview[r];
                 var isSep = showPageSeparators && row.length > 0 && row[0].indexOf('--- Page ') === 0;
-                bodyHtml += '<tr' + (isSep ? ' class="page-separator"' : '') + '>';
+                bh += '<tr' + (isSep ? ' class="page-separator"' : '') + '>';
                 for (var c = 0; c < maxCols; c++) {
                     var val = (c < row.length) ? escapeHtml(row[c] || '') : '';
-                    bodyHtml += '<td title="' + val + '">' + val + '</td>';
+                    var cls = numCols[c] ? ' class="num-cell"' : '';
+                    bh += '<td' + cls + ' title="' + val + '">' + val + '</td>';
                 }
-                bodyHtml += '</tr>';
+                bh += '</tr>';
             }
-            tbody.innerHTML = bodyHtml;
+            tbody.innerHTML = bh;
 
             var note = document.getElementById('preview-note');
-            if (isAi) {
-                note.textContent = 'Header detected as column names';
-                note.style.color = 'var(--ai-color)';
-            } else {
-                note.textContent = data.length > 50 ? 'Showing 50 of ' + data.length + ' rows' : data.length + ' rows total';
-                note.style.color = 'var(--text-muted)';
-            }
+            if (isAi) { note.textContent = 'Header detected as column names'; note.style.color = 'var(--ai-color)'; }
+            else { note.textContent = data.length > 50 ? 'Showing 50 of ' + data.length + ' rows' : data.length + ' rows total'; note.style.color = 'var(--text-muted)'; }
         }
 
-        /* ===== Excel Download — Fully Fixed ===== */
+        /* ================================================================
+           EXCEL EXPORT — Complete Rewrite for Bank Statements & Tables
+           ================================================================ */
         btnDownload.addEventListener('click', function() {
             var data = isAligned ? alignedData : extractedData;
-            if (!data || data.length === 0) {
-                showToast('No data to download', 'error');
-                return;
-            }
+            if (!data || data.length === 0) { showToast('No data to download', 'error'); return; }
 
             try {
-                /* Step 1: Find the TRUE maximum column count across ALL rows */
+                /* Step 1: Find true max column count across ALL rows */
                 var maxCols = getMaxCols(data);
 
-                /* Step 2: Build a clean 2D array — every cell is a string, no nulls/undefined */
+                /* Step 2: Build clean 2D string array — zero nulls/undefined */
                 var cleanData = [];
-                data.forEach(function(row) {
-                    if (!Array.isArray(row)) return;
+                for (var r = 0; r < data.length; r++) {
+                    var row = data[r];
+                    if (!Array.isArray(row)) continue;
                     var cleanRow = [];
                     for (var c = 0; c < maxCols; c++) {
                         var val = (c < row.length) ? row[c] : '';
@@ -1362,57 +1101,60 @@
                         cleanRow.push(val);
                     }
                     /* Keep only rows with at least one non-empty cell */
-                    if (cleanRow.some(function(cell) { return cell.length > 0; })) {
-                        cleanData.push(cleanRow);
-                    }
-                });
-
-                if (cleanData.length === 0) {
-                    showToast('All rows are empty after cleaning', 'error');
-                    return;
+                    var hasContent = false;
+                    for (var k = 0; k < cleanRow.length; k++) { if (cleanRow[k].length > 0) { hasContent = true; break; } }
+                    if (hasContent) cleanData.push(cleanRow);
                 }
 
-                /* Step 3: Create worksheet from clean array-of-arrays */
+                if (cleanData.length === 0) { showToast('No data after cleaning', 'error'); return; }
+
+                /* Step 3: Detect which columns are primarily numeric
+                   (important for bank statements: Debit, Credit, Balance columns) */
+                var numericColumns = {};
+                for (var c = 0; c < maxCols; c++) {
+                    var numCount = 0, nonEmpty = 0;
+                    for (var r = 1; r < cleanData.length; r++) {
+                        var v = cleanData[r][c];
+                        if (v.length > 0) { nonEmpty++; if (isNumericString(v)) numCount++; }
+                    }
+                    /* Mark as numeric if >60% of non-empty cells are numbers and we have at least 3 data points */
+                    if (nonEmpty >= 3 && numCount / nonEmpty > 0.6) numericColumns[c] = true;
+                }
+
+                /* Step 4: Create worksheet with ALL string values first */
                 var ws = XLSX.utils.aoa_to_sheet(cleanData);
 
-                /* Step 4: Calculate column widths from ALL rows */
-                var colWidths = [];
-                for (var c = 0; c < maxCols; c++) {
-                    var maxLen = 8;
-                    for (var r = 0; r < cleanData.length; r++) {
-                        var cellText = cleanData[r][c] || '';
-                        if (cellText.length > maxLen) maxLen = cellText.length;
-                    }
-                    colWidths.push({ wch: Math.max(10, Math.min(maxLen + 3, 80)) });
-                }
-                ws['!cols'] = colWidths;
-
-                /* Step 5: Set row heights for readability */
-                var rowHeights = [];
-                for (var r = 0; r < cleanData.length; r++) {
-                    rowHeights.push({ hpt: 22 });
-                }
-                ws['!rows'] = rowHeights;
-
-                /* Step 6: Convert numeric-looking cells to proper number type */
+                /* Step 5: Convert numeric columns to proper number type in Excel */
                 if (ws['!ref']) {
                     var range = XLSX.utils.decode_range(ws['!ref']);
                     for (var R = range.s.r; R <= range.e.r; R++) {
                         for (var C = range.s.c; C <= range.e.c; C++) {
+                            /* Skip header row (row 0) — keep as text */
+                            if (R === 0) continue;
+                            /* Only process columns detected as numeric */
+                            if (!numericColumns[C]) continue;
+
                             var addr = XLSX.utils.encode_cell({ r: R, c: C });
                             var cell = ws[addr];
                             if (!cell || cell.t !== 's' || !cell.v) continue;
                             var raw = cell.v.trim();
                             if (raw === '') continue;
+
                             var cleaned = raw.replace(/,/g, '');
                             if (/^-?\d+(\.\d+)?$/.test(cleaned)) {
                                 var num = parseFloat(cleaned);
                                 if (!isNaN(num) && isFinite(num)) {
                                     cell.t = 'n';
                                     cell.v = num;
+                                    /* Determine format from original string */
                                     if (raw.indexOf('.') > -1) {
-                                        var decimals = raw.split('.')[1].length;
-                                        cell.z = '0.' + new Array(decimals).fill('0').join('');
+                                        var decParts = raw.split('.');
+                                        var decLen = decParts[1].replace(/,/g, '').length;
+                                        if (raw.indexOf(',') > -1) {
+                                            cell.z = '#,##0.' + new Array(decLen).fill('0').join('');
+                                        } else {
+                                            cell.z = '0.' + new Array(decLen).fill('0').join('');
+                                        }
                                     } else if (raw.indexOf(',') > -1) {
                                         cell.z = '#,##0';
                                     } else {
@@ -1423,28 +1165,95 @@
                             }
                         }
                     }
+
+                    /* Re-encode the range to make sure it covers all cells */
+                    ws['!ref'] = XLSX.utils.encode_range(range);
                 }
 
-                /* Step 7: Build workbook and trigger download */
+                /* Step 6: Column widths — calculate from ALL rows, differentiate text vs number columns */
+                var colWidths = [];
+                for (var c = 0; c < maxCols; c++) {
+                    var maxLen = 8;
+                    for (var r = 0; r < cleanData.length; r++) {
+                        var len = (cleanData[r][c] || '').length;
+                        if (len > maxLen) maxLen = len;
+                    }
+                    if (numericColumns[c]) {
+                        /* Numeric columns: width based on max number length + padding for comma formatting */
+                        colWidths.push({ wch: Math.max(12, Math.min(maxLen + 4, 25)) });
+                    } else {
+                        /* Text columns: wider */
+                        colWidths.push({ wch: Math.max(10, Math.min(maxLen + 4, 60)) });
+                    }
+                }
+                ws['!cols'] = colWidths;
+
+                /* Step 7: Row heights */
+                var rowHeights = [];
+                for (var r = 0; r < cleanData.length; r++) rowHeights.push({ hpt: 20 });
+                ws['!rows'] = rowHeights;
+
+                /* Step 8: Freeze first row (header) */
+                ws['!freeze'] = { xSplit: 0, ySplit: 1 };
+
+                /* Step 9: Auto-filter on all columns */
+                if (cleanData.length > 1 && maxCols > 0) {
+                    var lastColLetter = XLSX.utils.encode_col(maxCols - 1);
+                    var lastRowNum = cleanData.length;
+                    ws['!autofilter'] = { ref: 'A1:' + lastColLetter + lastRowNum };
+                }
+
+                /* Step 10: Build workbook with metadata */
                 var wb = XLSX.utils.book_new();
+                wb.Props = {
+                    Title: 'PDF Data Export',
+                    Subject: currentFile ? currentFile.name : 'Converted PDF',
+                    Author: 'PDF to Excel Converter',
+                    CreatedDate: new Date()
+                };
                 XLSX.utils.book_append_sheet(wb, ws, 'PDF Data');
 
-                var baseName = currentFile.name.replace(/\.pdf$/i, '');
+                /* Step 11: Generate binary and trigger download manually
+                   (more reliable than XLSX.writeFile for some browsers) */
+                var baseName = currentFile ? currentFile.name.replace(/\.pdf$/i, '') : 'export';
                 var fileName = baseName + (isAligned ? '_aligned' : '') + '.xlsx';
 
-                XLSX.writeFile(wb, fileName);
+                var wbOut = XLSX.write(wb, { bookType: 'xlsx', type: 'array', bookSST: false });
+                var blob = new Blob([wbOut], {
+                    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                });
 
+                /* Cross-browser download trigger */
+                if (navigator.msSaveBlob) {
+                    navigator.msSaveBlob(blob, fileName);
+                } else {
+                    var url = URL.createObjectURL(blob);
+                    var link = document.createElement('a');
+                    link.href = url;
+                    link.download = fileName;
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    setTimeout(function() {
+                        document.body.removeChild(link);
+                        URL.revokeObjectURL(url);
+                    }, 200);
+                }
+
+                var numColCount = Object.keys(numericColumns).length;
+                var extraInfo = numColCount > 0 ? ' (' + numColCount + ' numeric columns)' : '';
                 showToast(
-                    'Exported ' + cleanData.length + ' rows \u00D7 ' + maxCols + ' columns \u2192 ' + fileName,
+                    'Exported ' + cleanData.length + ' rows \u00D7 ' + maxCols + ' columns' + extraInfo,
                     'success'
                 );
+
             } catch (err) {
                 console.error('Export error:', err);
                 showToast('Export failed: ' + err.message, 'error');
             }
         });
 
-        /* ===== Re-process & New File ===== */
+        /* ===== Other Buttons ===== */
         btnReprocess.addEventListener('click', function() {
             if (!currentFile) { showToast('No file loaded', 'error'); return; }
             if (currentPdfDoc) { currentPdfDoc.destroy(); currentPdfDoc = null; }
@@ -1452,30 +1261,21 @@
         });
 
         btnNew.addEventListener('click', function() {
-            currentFile = null;
-            extractedData = [];
-            rawPageItems = [];
-            alignedData = [];
+            currentFile = null; extractedData = []; rawPageItems = []; alignedData = [];
             if (currentPdfDoc) { currentPdfDoc.destroy(); currentPdfDoc = null; }
             fileInput.value = '';
             showSection('section-upload');
         });
 
-        /* ===== Toggle Switches ===== */
-        function setupToggle(element, getter, setter) {
-            element.addEventListener('click', function() {
-                var value = !getter();
-                setter(value);
-                if (value) {
-                    element.classList.add('active');
-                    element.setAttribute('aria-checked', 'true');
-                } else {
-                    element.classList.remove('active');
-                    element.setAttribute('aria-checked', 'false');
-                }
+        /* ===== Toggles ===== */
+        function setupToggle(el, getter, setter) {
+            el.addEventListener('click', function() {
+                var v = !getter(); setter(v);
+                if (v) { el.classList.add('active'); el.setAttribute('aria-checked', 'true'); }
+                else { el.classList.remove('active'); el.setAttribute('aria-checked', 'false'); }
             });
-            element.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); element.click(); }
+            el.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
             });
         }
         setupToggle(toggleColumns, function() { return autoDetectColumns; }, function(v) { autoDetectColumns = v; });
